@@ -6,6 +6,10 @@ app = Flask(__name__)
 
 SNS_TOPIC_ARN = os.environ.get("SNS_TOPIC_ARN")
 
+@app.route("/")
+def health():
+    return "OK", 200
+
 @app.route("/send", methods=["POST"])
 def send_message():
     data = request.get_json()
